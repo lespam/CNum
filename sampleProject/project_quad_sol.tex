@@ -1,0 +1,132 @@
+\documentclass[11pt,oneside,reqno]{amsart}
+%\documentclass[12pt]{scrartcl}
+\usepackage[letterpaper, margin=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{microtype}% improves font quality
+
+\usepackage{ctable} %toprule, midrule, bottomrule, ...
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\hypersetup{plainpages=false, linktocpage=true, colorlinks=false,
+            breaklinks=true, linkcolor=black, menucolor=black,
+			urlcolor=black, citecolor=black}
+\hypersetup{pdfauthor={Andreas Wachtel}}
+\hypersetup{pdfsubject={Calculo Numerico}}
+\hypersetup{pdftitle={sample project}}
+\decimalpoint 
+
+\usepackage[nodisplayskipstretch]{setspace}
+%\onehalfspacing
+\setstretch{1.2} % for custom spacing (1.3 is the value recommended (for linespread) to get one-half-spacing)
+
+\providecommand{\mkblue}[1]{{\color{blue}#1}}
+
+\pdfinfo
+  { /Title (Sample project)
+  /Author (Andreas Wachtel)
+%  /CreationDate (D:YYYYMMDDhhmmss) % this is the format used by pdf for date/time
+%  /Subject (...)
+%  /Keywords ()
+}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\set}[1]{\ensuremath{\left\{{#1}\right\}}}
+\newcommand{\abs}[1]{\ensuremath{\left|{#1}\right|}}
+\newcommand{\norm}[1]{\ensuremath{\left\lVert{#1}\right\rVert}}
+\newcommand{\MatLab}{MatLab}
+
+%\author{$1^a$ parte (17 Marzo, 17), $2^a$ parte (26 Marzo, 17)}
+\author{}
+\title{Project -- quadrature}
+%\date{16 de Marzo de 2017}
+\begin{document}
+\providecommand{\bydef}{\coloneqq}
+
+%úáóé
+
+%\maketitle
+
+\section{Problems}
+\subsection{Verification part 1, (3P)}
+\label{sec:ej31}
+Given the function 
+\[ f(x) = \frac{1}{2}x - 3\,. \]
+\begin{enumerate}
+\setlength{\labelsep}{1em}\setlength\itemsep{0.75em}%
+\item 
+ Approximate the value  $\int_0^8 f(x) \,\mathrm{d}x$ 
+
+
+{\color{blue}
+First, we note that $f$ is continuous. Hence we can apply all quadrature rules.
+\begin{verbatim}
+1) Aproximation
+        a) using the midpoint rule             :  -8
+        b) using the trapezoidal rule          :  -8
+        c) using the composite trapezoidal rule:  -8
+\end{verbatim}}
+
+
+\item Are the values exact? Justify why.
+
+\textcolor{blue}{YES, all results are exact up to rounding errors, since f is  affine linear}
+\end{enumerate}
+
+
+\bigskip
+\subsection{Verification part 2, (5P)}
+Given the function 
+\[ f(x) = e^x - 1\,. \]
+approximate $\int_{0}^3 f(x) \,\mathrm{d}x$.
+\begin{enumerate}
+\setlength{\labelsep}{1em}\setlength\itemsep{0.75em}%
+\item 
+Design a  composite rule similar to (3) using the midpoint rule.
+
+\[
+\color{blue}
+ \int _{a}^{b}f(x)\,\mathrm{d}x  
+ =\sum_{i=1}^{n-1} \int _{x_i}^{x_{i+1}}f(x)\,\mathrm{d}x  
+ \approx\sum_{i=1}^{n-1} (x_{i+1}-x_i)\cdot f\bigg(\frac{x_{i+1}+x_i}{2}\bigg) \,.
+\]
+
+\item Apply this rule and approximate $\int_{0}^3 f(x) \,\mathrm{d}x$ on 
+5 subdivisions of the interval $[0,3]$ into $n \in\set{1,2,4,8,16}$ subintervals.
+\begin{enumerate}
+\setlength{\labelsep}{0.5em}\setlength\itemsep{0.5em}%
+\item calculate (theoretically) the exact value. \\
+\[\color{blue}
+ \to \int_{0}^3 f(x) \,\mathrm{d}x = e^3-4 \approx 16.0855369231877
+\]
+\item for each $n\in\set{1,2,4,8,16}$, record the approximated values and fill the following table:
+\end{enumerate}
+{\small\color{blue}%
+Again, we note that $f$ is continuous. Hence we can apply the quadrature rule.
+\begin{center}
+\smallskip
+	\begin{tabular}{ccc}
+	  \toprule
+	  $n$  & approximate value & relative error\\
+\midrule[0.1pt]
+  1 &    10.44507 &   0.3506547366 \\
+  2 &    14.40710 &   0.1043442411 \\
+  4 &    15.64545 &   0.0273590958 \\
+  8 &    15.97416 &   0.0069237563 \\
+ 16 &    16.05761 &   0.0017362609 \\
+	  \bottomrule
+	\end{tabular}
+\smallskip
+\end{center}}
+\end{enumerate}
+
+
+
+
+
+\end{document}
