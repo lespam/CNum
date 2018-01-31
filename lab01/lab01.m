@@ -1,4 +1,5 @@
-A = [1 0 0; 0 0 -1; 1 0 0];
-q = [1;1;1];
-TOL = 10^-2;
-[sigma, w] = mPow( q, A, TOL );
+clear
+q = [1;1;1]
+A = [1 1 1; 1 2 3; 1 3 6]
+TOL = 10^-1;
+[error, sigma, w] = mPow( q, A, 1/10 )
