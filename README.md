@@ -4,3 +4,6 @@ Primavera 2018.
 ITAM  
 México  
 Leslie Brenes  
+
+
+git remote set-url origin new_url
