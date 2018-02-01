@@ -1,7 +1,7 @@
 
 % Author: LesPam
-function [sigma, w ] = mPow( q, A, TOL )
-% Power Method 
+function [sigma, w ] = invmPow( q, A, TOL )
+% Inverse Power Method 
 % This algorithm implements the Power Method to a Matrix
 % In  : q       initial vector
 %       A       square Matrix
@@ -14,11 +14,13 @@ function [sigma, w ] = mPow( q, A, TOL )
     sigma = 25;
     error = 1;
     
+    %Inver the matrix
+    
     while error>TOL
         w = q/norm(q);
-        q = A*w;
+        q = A\w;
         sigma = dot(w,q);
-        error = norm(A*w - sigma*w)/norm(A*w);
+        error = norm(A\ w - sigma*w)/norm(A\w);
     end
     w = q/norm(q);
 end
