@@ -1,6 +1,6 @@
 
 % Author: LesPam
-function [sigma, w ] = mPow( q, A, TOL )
+function [sigma, w ,it] = mPow( q, A, TOL )
 % Power Method 
 % This algorithm implements the Power Method to a Matrix
 % In  : q       initial vector
@@ -13,12 +13,15 @@ function [sigma, w ] = mPow( q, A, TOL )
     %Tolerancia
     sigma = 25;
     error = 1;
+    it = 0;
     
     while error>TOL
         w = q/norm(q);
         q = A*w;
         sigma = dot(w,q);
         error = norm(A*w - sigma*w)/norm(A*w);
+        it = it+1;
     end
     w = q/norm(q);
+    it = it+1;
 end
