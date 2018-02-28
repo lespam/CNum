@@ -1,18 +1,18 @@
 % Author: LesPam
-function [lam1, w] = mPI( A, q0, k, TOL )
+function [lam1, w] = mPI( A, q0, k, tol )
 % Power Method 
 % This algorithm implements the Power Method to a Matrix
-% In  : q       initial vector
+% In:   q0      initial vector
 %       A       square Matrix
-%       TOL     tolerance error number
+%       tol     tolerance error number
+%       k       iteration number
 
-% Out : sigma   dominant eigenvalue
+% Out:  lam1   dominant eigenvalue
 %       w       dominant eigenvector
 
-    %Tolerancia
     error = 1;
     it = 0;
-    while error>TOL && k>=it
+    while error>tol && k>=it
         w = q0/norm(q0);
         q0 = A*w;
         lam1 = dot(w,q0);
@@ -20,4 +20,5 @@ function [lam1, w] = mPI( A, q0, k, TOL )
         it = it+1;
     end
     w = q0/norm(q0);
+    
 end
