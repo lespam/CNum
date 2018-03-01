@@ -40,4 +40,4 @@ r=D(2,2)/D(3,3)
 
 rho = 3.3;
 [lam3, w3] = mPIinvShift(A, q0, rho, k, tol)
-r=D(3,3)/D(1,1)
+r=(D(3,3)-rho)/(D(1,1)-rho)
