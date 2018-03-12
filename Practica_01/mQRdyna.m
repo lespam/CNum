@@ -21,12 +21,12 @@ while (i>1)
         %QR con shift din?mico
         [Qi,R]=qr(A-mu*eye(i));
         A=(R*Qi)+(mu*eye(i));
-        Q = Q*Qi;
+        
     end
     %vector de eigenvalores
     lambdas(M-i+1)=A(i,i);
     i=i-1;
-    if(norm(diag(Qi'*A*Qi,-1))<tol || j>k)
+    if(norm(diag(Qi'*A*Qi,-1))<tol || j>=k)
         break
     end
     %deflaci?n

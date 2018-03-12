@@ -10,7 +10,6 @@ figure(1);
 imshow(RGB);
 
 
-
 figure(2);
 A = [RGB(:,:,1); RGB(:,:,2); RGB(:,:,3)];
 [m,n] = size(A);
