@@ -2,7 +2,7 @@ function [U, S, V] = mSvdEco(A)
 
 k=1000
 
-tol=1e-10
+tol=10e-10
 tol2=10e-10
 
 [m,n]=size(A)
