@@ -1,26 +1,76 @@
-function [U, S, V] = mSvdEco(A)
-K=
-Tol=
-i=1
-[n,m]=length(A);
-V=zeros(n,r)
-S=zeros(r,r)
-U=zeros(m,r)
- 
-if(n<=m)
-[vaps,V]=QRdyna(A*(A'), k, tol)
-
-while(vaps(i)>=10e-7)
-            U(:,i)=(1/vaps(i))*A*V(:,i)
-            i=i+1
-end
-else
-[vaps,U]=QRdyna((A')*A, k, tol)
-    
-while(vaps(i)>=10e-7)
-    V(:,i)=(1/vaps(i))*(A')*U(:,i)
-end
-end
-
-i=i-1
-S=diag(vaps(1:i)
+function [U, S, V] = mSvdEco(A)
+
+k=20
+
+tol=1e-5
+
+
+
+[m,n]=size(A)
+i=1;
+if(n<=m)
+
+[vaps,Vi]=mQRdyna((A'*A),k, tol)
+for r=1:n
+   vaps(i)=sqrt(vaps(i))
+  if vaps(i)<=10e-7
+    r=r-1;
+    break 
+    end
+    end
+  
+
+  
+
+
+
+vaps(1)=sqrt(vaps(1));
+while( i<=r) 
+
+            
+            
+            U(:,i)=(1/vaps(i))*A*Vi(:,i) 
+            
+            i=i+1;
+           
+           
+            
+
+end
+
+V=Vi(:,1:r)
+
+else
+
+[vaps,Ui]=mQRdyna((A*A'), k, tol)
+vaps
+for r=1:m
+   vaps(i)=sqrt(vaps(i))
+  if vaps(i)<=10e-7
+    r=r-1;
+    break 
+    end
+    end
+  
+
+
+
+    
+vaps(1)=sqrt(vaps(1));
+while(i<=r)
+    
+    V(:,i)=(1/vaps(i))*(A')*Ui(:,i)
+    i=i+1
+    
+
+end
+
+
+
+U=Ui(:,1:r)
+
+
+end
+
+S=diag(vaps(1:r))
+
