@@ -1,4 +1,4 @@
-function [lambdas, Q] = mQRdyna(A, k, tol)
+function [lambdas] = mQRdyna(A, k, tol)
 M=length(A);
 B=A;
 i=M;
@@ -21,7 +21,6 @@ while (i>1)
         %QR con shift din?mico
         [Qi,R]=qr(A-mu*eye(i));
         A=(R*Qi)+(mu*eye(i));
-        
     end
     %vector de eigenvalores
     lambdas(M-i+1)=A(i,i);
