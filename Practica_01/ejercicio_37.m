@@ -4,7 +4,7 @@ clear all;   close all;   clc;
 mySvd = @(A)  mSvdEco(A);
 
 
-RGB = imread('small.jpg');
+RGB = imread('PianoMomSon.jpg');
 
 figure(1);
 imshow(RGB);

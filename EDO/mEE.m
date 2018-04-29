@@ -1,9 +1,9 @@
 function [T, W] = mEE(f, y0, I, m)
-%Euler expl´?cito
+%Euler expl??cito
 % In:   f ... lado derecho de la EDO
 %       yo ... (vector columna) con CI
 %       I ... vector [t0, tm]
-%       m ...  número de pasos
+%       m ...  n?mero de pasos
 %
 % Out:  T ... vectr con m+1 entradas
 %       W ... matriz n*(m+1)
@@ -18,6 +18,6 @@ function [T, W] = mEE(f, y0, I, m)
 %     W(:,j+1) = W(:,j) + h*f((T(j)), W(:,j));
 % end
 
-[T,W] = mGenerico(@pasoEuler, f, y0, I, m)
+[T,W] = mGenerico(@pasoEulerE, f, y0, I, m)
 end
 

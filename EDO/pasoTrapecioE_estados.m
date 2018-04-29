@@ -1,5 +1,5 @@
-function [wNuevo, kNuevo] = pasoEulerE(f, tj, wj, h,kj)
-%Euler expl??cito
+function [wNuevo,kNuevo] = pasoTrapecioE_estados(f, tj, wj, h,kj)
+%Trapecio expl??cito
 % In:   f ... lado derecho de la EDO
 %       wj ... (vector columna) con CI de dimens
 %       tj ... tiempo inicial
@@ -7,7 +7,7 @@ function [wNuevo, kNuevo] = pasoEulerE(f, tj, wj, h,kj)
 %
 % Out:  T ... vectr con m+1 entradas
 %       W ... matriz n*(m+1)
-
-    wNuevo = wj + h*f(tj, wj); 
-    kNuevo = kj + 1;
+    wjn = f(tj, wj);
+    wNuevo = wj + (0.5*h)*(wjn+f(tj+h, wj + h*wjn)); 
+    kNuevo = kj + 2;
 end

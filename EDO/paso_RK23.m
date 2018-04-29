@@ -22,7 +22,7 @@ function [ tN,wN,hN ] = paso_RK23( f, tj, wj, hj, tol)
         if(any(cota >= tol*max(abs(wj), theta)))
             h = 0.5*h;
         else
-            wN =  wj + h*(s1+s2)/2;
+            wN =  wj + h*(s1+s2)*0.5;
             tN = tj + h;
             hN = 2*h;
             break;
